@@ -8,7 +8,7 @@
     <AssemblyName>ZawatSys.MicroLib.AI</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>ZawatSys.MicroLib.AI</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>ZawatSys Team</Authors>
     <Company>ZawatSys</Company>
     <Product>ZawatSys AI Domain Library</Product>
