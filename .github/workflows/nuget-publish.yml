@@ -1,0 +1,35 @@
+name: Publish ZawatSys.MicroLib.AI Package
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish-package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore dependencies
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_AUTH_TOKEN }}
+        run: dotnet restore --configfile nuget.config
+
+      - name: Build package
+        run: dotnet build -c Release --no-restore
+
+      - name: Pack package
+        run: dotnet pack -c Release --no-build -o ./nupkg
+
+      - name: Push package to GitHub Packages
+        run: dotnet nuget push "./nupkg/*.nupkg" --source "https://nuget.pkg.github.com/A95H/index.json" --api-key "${{ secrets.GITHUB_TOKEN }}" --skip-duplicate
