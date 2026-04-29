@@ -456,7 +456,7 @@ public sealed class AIProviderMetadata
     };
 }
 
-internal static class AIPromptSanitizer
+public static class AIPromptSanitizer
 {
     private static readonly JsonSerializerOptions SerializerOptions = new(JsonSerializerDefaults.Web);
 
