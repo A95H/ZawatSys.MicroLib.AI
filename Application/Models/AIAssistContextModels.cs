@@ -48,6 +48,7 @@ public sealed class AIToolResult
 public sealed class AIPromptPayload
 {
     public string PromptVersion { get; set; } = string.Empty;
+    public string SystemPrompt { get; set; } = string.Empty;
     public string UserPrompt { get; set; } = string.Empty;
 
     public object ToPromptModel() => new
