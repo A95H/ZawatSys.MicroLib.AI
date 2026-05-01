@@ -4,11 +4,12 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <DefaultItemExcludes>$(DefaultItemExcludes);artifacts\**;obj\**;bin\**</DefaultItemExcludes>
     <RootNamespace>ZawatSys.MicroLib.AI</RootNamespace>
     <AssemblyName>ZawatSys.MicroLib.AI</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>ZawatSys.MicroLib.AI</PackageId>
-    <Version>1.0.4</Version>
+    <Version>1.0.7</Version>
     <Authors>ZawatSys Team</Authors>
     <Company>ZawatSys</Company>
     <Product>ZawatSys AI Domain Library</Product>
@@ -19,7 +20,7 @@
   <ItemGroup>
     <PackageReference Include="MediatR" Version="14.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0" />
-    <PackageReference Include="ZawatSys.MicroLib.Medical" Version="1.0.9" />
+    <PackageReference Include="ZawatSys.MicroLib.Medical" Version="1.0.11" />
     <PackageReference Include="ZawatSys.MicroLib.Shared" Version="1.0.7" />
   </ItemGroup>
 
