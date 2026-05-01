@@ -15,6 +15,7 @@ public interface IAIAuditSuggestionRepository
 
     /// <summary>
     /// Checks whether a suggestion exists for the specified audit request and tenant.
+    /// suggestionId is the internal AIAuditSuggestion.Id value.
     /// </summary>
     Task<bool> ExistsAsync(Guid requestEntityId, Guid suggestionId, Guid tenantId, CancellationToken cancellationToken = default);
 }

@@ -288,11 +288,18 @@ public sealed class AIAnatomicalLocationInput
     public Guid LocationId { get; set; }
     public string? Code { get; set; }
     public string? Name { get; set; }
+    public string? Type { get; set; }
+    public string? BodySystem { get; set; }
+    public Guid? ParentId { get; set; }
+    public string? HierarchyPath { get; set; }
 
     public object ToPromptModel() => new
     {
-        //code = Code,
-        name = Name
+        code = Code,
+        name = Name,
+        type = Type,
+        bodySystem = BodySystem,
+        hierarchyPath = HierarchyPath
     };
 }
 
@@ -301,22 +308,29 @@ public sealed class AIOperationInput
     public Guid OperationId { get; set; }
     public Guid EncounterId { get; set; }
     public Guid ProcedureCatalogId { get; set; }
+    public string? ProcedureCatalogCode { get; set; }
+    public string? ProcedureCatalogName { get; set; }
     public string Status { get; set; } = string.Empty;
     public string? Priority { get; set; }
     public DateTimeOffset? PlannedDate { get; set; }
     public DateTimeOffset? StartedAt { get; set; }
     public DateTimeOffset? CompletedAt { get; set; }
     public bool? IsSuccessful { get; set; }
+    public string? Notes { get; set; }
     public IReadOnlyCollection<AIAnatomicalLocationInput> AnatomicalLocations { get; set; } = [];
 
     public object ToPromptModel() => new
     {
+        procedureCatalogId = ProcedureCatalogId,
+        procedureCatalogCode = ProcedureCatalogCode,
+        procedureCatalogName = ProcedureCatalogName,
         status = Status,
         priority = Priority,
         plannedDate = PlannedDate,
         startedAt = StartedAt,
         completedAt = CompletedAt,
         isSuccessful = IsSuccessful,
+        notes = Notes,
         anatomicalLocations = (AnatomicalLocations ?? []).Select(static item => item.ToPromptModel()).ToArray()
     };
 }
@@ -414,6 +428,7 @@ public sealed class AIAssistResponse
 public sealed class AISuggestion
 {
     public Guid SuggestionId { get; set; }
+    public string? ProviderSuggestionId { get; set; }
     public string Title { get; set; } = string.Empty;
     public AISuggestionType SuggestionType { get; set; } = AISuggestionType.Unknown;
     public string Type { get; set; } = string.Empty;
