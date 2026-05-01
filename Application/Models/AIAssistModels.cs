@@ -93,7 +93,7 @@ public sealed class AIAssistRequest
 
         return new
         {
-            trace = TraceId,
+            //trace = TraceId,
             requestedAt = RequestedAt,
             locale = Locale,
             observations = promptObservations,
@@ -291,7 +291,7 @@ public sealed class AIAnatomicalLocationInput
 
     public object ToPromptModel() => new
     {
-        code = Code,
+        //code = Code,
         name = Name
     };
 }
